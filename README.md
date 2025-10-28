@@ -1,0 +1,9 @@
+    BoardNet
+
+Projeto com objetivo de criar uma plataforma especializada em troca e venda de boardgames, além de conectar jogadores por todo Brasil para apreciar este grande 
+hobby que é a paixão de muitos.
+
+Histórico de commits:
+- feat:first commit - criação do repositorio no github e no projeto local;
+- feat:opening Repository - Criação do README geral e descrição do projeto;
+
