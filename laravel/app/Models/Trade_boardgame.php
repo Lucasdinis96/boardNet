@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Trade_board extends Model
 {
+
+    use HasFactory;
+    
     protected $table = 'trade_boardgames';
     protected $fillable = [
         'trade_id',

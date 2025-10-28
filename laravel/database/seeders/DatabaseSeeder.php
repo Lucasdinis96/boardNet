@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use CitiesTableSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -19,7 +17,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             StatesTableSeeder::class,
             CitiesTableSeeder::class,
-            UsersTableSeeder::class
+            UsersTableSeeder::class,
+            BoardgameTableSeeder::class,
+            CollectionTableSeeder::class,
+            TradeTableSeeder::class,
+            TradeBoardgameTableSeeder::class
         ]);
     }
 }
