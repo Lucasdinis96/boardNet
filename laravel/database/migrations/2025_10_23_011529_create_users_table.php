@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->date('birthdate')->nullable();
-            $table->foreignId('city_id')->references('id')->on('cities')->onDelete('set null');
+            $table->foreignId('city_id')->nullable()->references('id')->on('cities')->onDelete('set null');
             $table->rememberToken();
             $table->timestamps();
         });

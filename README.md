@@ -4,6 +4,7 @@ Projeto com objetivo de criar uma plataforma especializada em troca e venda de b
 hobby que é a paixão de muitos.
 
 Histórico de commits:
-- feat:first commit - criação do repositorio no github e no projeto local;
-- feat:opening Repository - Criação do README geral e descrição do projeto;
+- feat: first commit - Criação do repositorio no github e no projeto local;
+- feat: opening Repository - Criação do README geral e descrição do projeto;
+- feat: database creation - Criação do banco de dados e seeders para testes;
 
