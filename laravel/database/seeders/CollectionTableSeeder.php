@@ -16,11 +16,11 @@ class CollectionTableSeeder extends Seeder
         DB::table('collections')->insert([
             [
                 'user_id' => 1,
-                'boardgame_id' => 3
+                'boardgame_id' => 3,
             ],
             [
                 'user_id' => 3,
-                'boardgame_id' => 2
+                'boardgame_id' => 2,
             ],
         ]);
     }

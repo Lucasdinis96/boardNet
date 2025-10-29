@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('boardgame_id')->references('id')->on('boardgames')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
