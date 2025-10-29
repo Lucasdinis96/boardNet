@@ -22,7 +22,9 @@ class BoardgameTableSeeder extends Seeder
                 'age_range' => 'A partir de 12 anos',
                 'description' => 'Em Catan os jogadores tentam ser a força dominante na ilha de Catan, construindo estradas, vilas e cidades. Em cada turno, 
                     os dados são rolados para determinar quais recursos a ilha produz. Os jogadores coletam esses recursos - madeira, trigo, tijolo, ovelha ou pedra
-                    - para construir suas civilizações, chegar a 10 pontos de vitória e ganhar o jogo.'
+                    - para construir suas civilizações, chegar a 10 pontos de vitória e ganhar o jogo.',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'title' => 'Carcassone',
@@ -35,7 +37,9 @@ class BoardgameTableSeeder extends Seeder
                     tabuleiro e você deve tentar controlar áreas como uma cidade (Cavaleiro), uma estrada (Ladrão), um mosteiro (Monge) ou dos campos (Fazendeiros) 
                     para ganhar pontos. Carcassonne além de ser o jogo que inventou o marcador do Meeple (my+people) se tornou um novo clássico moderno dos jogos de
                     tabuleiro, altamente acessível à iniciantes, mas com camadas estratégicas tão fortes que se tornou um jogo com diversos torneios e competições 
-                    mundiais.'
+                    mundiais.',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'title' => 'Munchkin',
@@ -50,7 +54,9 @@ class BoardgameTableSeeder extends Seeder
                     Calçe as “Botas de Chutar a Bunda” ou talvez use sua “Serra Elétrica de Mutilação Sangrenta”.
                     Dê início à sua saga massacrando “Rãs Voadoras” ou um “Troll da Internet”, para quem sabe um dia ter o prazer de matar o temível
                     “Dragão de Plutônio”.
-                    Rápido e leve, Munchkin vai levar qualquer grupo de jogadores de RPG à loucura! E, enquanto todos estiverem rindo, você pode roubar suas coisas.'
+                    Rápido e leve, Munchkin vai levar qualquer grupo de jogadores de RPG à loucura! E, enquanto todos estiverem rindo, você pode roubar suas coisas.',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
         ]);
     }

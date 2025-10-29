@@ -17,17 +17,17 @@ class TradeBoardgameTableSeeder extends Seeder
             [
                 'trade_id' => 1,
                 'boardgame_id' => 3,
-                'value' => 134.98
+                'value' => 134.98,
             ],
             [
                 'trade_id' => 2,
                 'boardgame_id' => 2,
-                'value' => 157.32
+                'value' => 157.32,
             ],
             [
                 'trade_id' => 2,
                 'boardgame_id' => 1,
-                'value' => 157.32
+                'value' => 157.32,
             ],
         ]);
         

@@ -7,4 +7,5 @@ Histórico de commits:
 - feat: first commit - Criação do repositorio no github e no projeto local;
 - feat: opening Repository - Criação do README geral e descrição do projeto;
 - feat: database creation - Criação do banco de dados e seeders para testes;
+- feat: controller creation - Criação das controllers básicas para tornar o sistema funcional;
 
