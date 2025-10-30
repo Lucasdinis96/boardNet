@@ -18,9 +18,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     libzip-dev \
     apt-utils \
-    libonig-dev
-
-RUN apt-get update && apt-get install -y \
+    libonig-dev \
     default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
@@ -33,6 +31,10 @@ RUN mkdir -p /usr/src/php/ext/redis; \
 	docker-php-ext-install redis;
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g npm@latest
 
 RUN groupadd -g 1000 laravel
 RUN useradd -u 1000 -ms /bin/bash -g laravel user

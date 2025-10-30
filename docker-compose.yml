@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   php:
     container_name: api_backend
@@ -71,6 +69,15 @@ services:
       dockerfile: Dockerfile
     ports:
       - '6379:6379'
+  vite:
+    container_name: vite
+    image: node:20
+    working_dir: /var/www
+    volumes:
+      - ./laravel:/var/www
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - "5173:5173"
 
 networks:
   laravel-network:
