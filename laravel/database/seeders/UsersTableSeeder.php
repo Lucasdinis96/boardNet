@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Test User 02',
                 'email' => 'test02@example.com',
-                'password' => bcrypt('teste01'),
+                'password' => bcrypt('teste02'),
                 'birthdate' => Carbon::parse('2003-09-12'),
                 'city_id' => City::inRandomOrder()->first()->id,
                 'created_at' => now(),
@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Test User 03',
                 'email' => 'test03@example.com',
-                'password' => bcrypt('teste01'),
+                'password' => bcrypt('teste03'),
                 'birthdate' => Carbon::parse('2000-10-15'),
                 'city_id' => City::inRandomOrder()->first()->id,
                 'created_at' => now(),

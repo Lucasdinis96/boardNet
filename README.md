@@ -8,4 +8,5 @@ Histórico de commits:
 - feat: opening Repository - Criação do README geral e descrição do projeto;
 - feat: database creation - Criação do banco de dados e seeders para testes;
 - feat: controller creation - Criação das controllers básicas para tornar o sistema funcional;
+- feat: authentication - Instalação do Laravel Breeze para autenticação de usuário;
 
