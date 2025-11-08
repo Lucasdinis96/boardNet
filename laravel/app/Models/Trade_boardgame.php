@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Trade_board extends Model
+class Trade_boardgame extends Model
 {
 
     use HasFactory;
@@ -17,11 +17,13 @@ class Trade_board extends Model
         'value'
     ];
 
-    public function boardgame () {
-        return $this->belongsToMany(Boardgame::class);
+    public function trade()
+    {
+        return $this->belongsTo(Trade::class);
     }
 
-    public function trade() {
-        return $this->belongsToMany(Trade::class);
+    public function boardgame()
+    {
+        return $this->belongsTo(Boardgame::class);
     }
 }

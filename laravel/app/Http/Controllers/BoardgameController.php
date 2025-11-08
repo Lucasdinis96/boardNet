@@ -9,8 +9,16 @@ class BoardgameController extends Controller
 {
 
     public function index() {
-        $boardgames = Boardgame::paginate(10);
+        $boardgames = Boardgame::paginate(8);
         return view('boardgames.index',compact('boardgames'));
+    }
+
+    public function show(Request $request, string $id) {
+        
+        $boardgame = Boardgame::findOrFail($id);
+        $backUrl = $request->back ?? route('home');
+
+        return view('boardgames.show', compact('boardgame', 'backUrl'));
     }
 
     public function create() {

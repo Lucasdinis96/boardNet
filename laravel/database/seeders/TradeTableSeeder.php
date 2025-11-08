@@ -15,7 +15,6 @@ class TradeTableSeeder extends Seeder
     {
         DB::table('trades')->insert([
             [
-                'id' => 1,
                 'title' => 'Abrindo espaço',
                 'description' => 'Preciso abrir espaço, então desejo uma nova
                 casa para estes camaradas',
@@ -24,7 +23,6 @@ class TradeTableSeeder extends Seeder
                 'updated_at' => now()
             ],
             [
-                'id' => 2,
                 'title' => 'Vendendo memórias',
                 'description' => 'Vou me mudar e não posso leva-los comigo, estão 
                 em boas condições, usados moderadamente',

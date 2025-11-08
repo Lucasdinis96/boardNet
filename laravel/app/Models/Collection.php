@@ -16,10 +16,10 @@ class Collection extends Model
     ];
 
     public function user() {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function boardgame() {
-        return $this->belongsToMany(Boardgame::class);
+        return $this->belongsTo(Boardgame::class);
     }
 }

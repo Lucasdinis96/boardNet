@@ -9,4 +9,4 @@ Histórico de commits:
 - feat: database creation - Criação do banco de dados e seeders para testes;
 - feat: controller creation - Criação das controllers básicas para tornar o sistema funcional;
 - feat: authentication - Instalação do Laravel Breeze para autenticação de usuário;
-
+- feat: Layouts and Views - Criação do layout base e views e customização das paginas de autenticação.

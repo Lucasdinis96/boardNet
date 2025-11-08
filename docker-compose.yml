@@ -71,6 +71,7 @@ services:
       - '6379:6379'
   vite:
     container_name: vite
+    restart: unless-stopped
     image: node:20
     working_dir: /var/www
     volumes:
