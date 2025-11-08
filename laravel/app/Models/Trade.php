@@ -19,4 +19,10 @@ class Trade extends Model
     public function user () {
         return $this->belongsTo(User::class);
     }
+
+   public function boardgames () {
+        return $this->belongsToMany(Boardgame::class, 'trade_boardgames', 'trade_id', 'boardgame_id')
+                    ->withPivot('value')
+                    ->withTimestamps();
+    }
 }

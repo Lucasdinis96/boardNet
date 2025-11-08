@@ -1,11 +1,11 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Profile Information') }}
+        <h2 class="text-lg font-medium text-white font-semibold">
+            {{ __('Informações do Perfil') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __("Update your account's profile information and email address.") }}
+        <p class="mt-1 text-sm text-white">
+            {{ __("Atualize os dados do seu perfil e seu email.") }}
         </p>
     </header>
 
@@ -18,7 +18,7 @@
         @method('patch')
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('Nome')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
@@ -47,8 +47,34 @@
             @endif
         </div>
 
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+        <div>
+            <x-input-label for="birthdate" :value="__('Data de Nascimento')" />
+            <x-text-input id="birthdate" name="birthdate" type="date" class="mt-1 block w-full" :value="old('birthdate', $user->birthdate)" required autofocus autocomplete="birthdate" />
+            <x-input-error class="mt-2" :messages="$errors->get('birthdate')" />
+        </div>
+
+        <div>
+            <x-input-label for="city" :value="__('Cidade')" />
+            <x-text-input 
+                type="text" 
+                id="city-input" 
+                name="city_name" 
+                class="mt-1 block w-[470px] border-gray-300 rounded-md shadow-sm" 
+                placeholder="Digite o nome da cidade..." 
+                autocomplete="off"
+                value="{{ old('city_name', $user->city ? $user->city->name . ' - ' . $user->city->state->uf : '') }}"
+            />
+            <input type="hidden" name="city_id" id="city-id" value="{{ old('city_id', $user->city_id) }}"/>
+            <div
+                <x-text-input id="city-results" 
+                class="absolute z-10 w-[470px] border border-gray-300 rounded-md mt-1 hidden max-h-48 overflow-y-auto"
+                />
+            />
+            <x-input-error class="mt-2" :messages="$errors->get('city')" />
+        </div>
+
+        <div class="flex items-center gap-4 mt-2">
+            <x-primary-button>{{ __('Salvar') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -56,9 +82,62 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600 dark:text-gray-400"
-                >{{ __('Saved.') }}</p>
+                    class="text-sm text-white"
+                >{{ __('Salvo.') }}</p>
             @endif
         </div>
     </form>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('city-input');
+    const results = document.getElementById('city-results');
+    const cityId = document.getElementById('city-id');
+    let timeout = null;
+
+    input.addEventListener('input', () => {
+        clearTimeout(timeout);
+        const query = input.value.trim();
+
+        if (query.length < 2) {
+            results.innerHTML = '';
+            results.classList.add('hidden');
+            return;
+        }
+
+        // atraso para evitar chamadas excessivas
+        timeout = setTimeout(() => {
+            fetch(`/cities/search?q=${encodeURIComponent(query)}`)
+                .then(res => res.json())
+                .then(data => {
+                    results.innerHTML = '';
+                    if (data.length === 0) {
+                        results.innerHTML = '<div class="p-2 text-gray-500">Nenhuma cidade encontrada</div>';
+                    } else {
+                        data.forEach(city => {
+                            const option = document.createElement('div');
+                            option.textContent = city.name;
+                            option.classList.add('p-2', 'cursor-pointer', 'hover:bg-white', 'hover:text-black');
+                            option.addEventListener('click', () => {
+                                input.value = city.name;
+                                cityId.value = city.id;
+                                results.innerHTML = '';
+                                results.classList.add('hidden');
+                            });
+                            results.appendChild(option);
+                        });
+                    }
+                    results.classList.remove('hidden');
+                });
+        }, 300);
+    });
+
+    // Fecha o dropdown ao clicar fora
+    document.addEventListener('click', (e) => {
+        if (!results.contains(e.target) && e.target !== input) {
+            results.classList.add('hidden');
+        }
+    });
+});
+</script>

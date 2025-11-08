@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('trade_id')->references('id')->on('trades')->onDelete('cascade');
             $table->foreignId('boardgame_id')->references('id')->on('boardgames')->onDelete('cascade');
             $table->float('value', 8, 2)->nullable();
+            $table->timestamps();
         });
     }
 

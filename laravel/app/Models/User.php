@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -22,7 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'birthdate',
-        'city'
+        'city_id'
     ];
 
     /**
@@ -50,5 +51,15 @@ class User extends Authenticatable
 
     public function city (){
         return $this->belongsTo(City::class);
+    }
+    
+    public function collection() {
+        return $this->belongsToMany(Boardgame::class, 'collections');
+    }
+
+    public function boardgames() {
+        return $this->belongsToMany(Boardgame::class, 'collections')
+                ->withPivot('id')
+                ->withTimestamps();
     }
 }

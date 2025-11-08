@@ -44,7 +44,7 @@ class BoardgameTableSeeder extends Seeder
             [
                 'title' => 'Munchkin',
                 'publisher' => 'Devir Brasil',
-                'players' => '2 a 6Jogadores',
+                'players' => '2 a 6 Jogadores',
                 'playtime' => '90 min',
                 'age_range' => 'A partir de 10 anos',
                 'description' => 'Entre na Dungeon e explore seus mistérios! Abra portas secretas e mate todos os monstros que cruzarem seu caminho. Trapaceie seus

@@ -4,32 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Models\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CollectionController extends Controller
 {
 
     public function index() {
-        $collections = Collection::with('user','boardgame');
-        return view ('collections.index', compact('boardgames'));
+        $boardgames = Auth::user()->boardgames()->withPivot('id')->paginate(8);
+        return view ('users.collection', compact('boardgames'));
     }
 
-    public function store(Request $request) {
+    public function add(Request $request) {
         $request->validate([
-            'user_id' => 'required'|'exists:users,id',
-            'boardgame_id' => 'required'|'exists:boardgames,id',
+            'boardgame_id' => 'required|exists:boardgames,id',
         ]);
 
         Collection::create([
-            'user_id' => $request->user_id,
+            'user_id' => Auth::id(),
             'boardgame_id' => $request->boardgame_id,
         ]);
 
-        return redirect()->route('boardgames.index')->with('success', 'Adicionado a coleção');
+        return back();
     }
 
     public function remove(Collection $collection) {
         $collection->delete();
 
-        return redirect()->route('collections.index')->with('success', 'Removido da coleção');
+        return back();
     }
 }

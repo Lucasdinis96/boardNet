@@ -1,6 +1,8 @@
-<x-guest-layout>
+@extends('layouts.layout')
+@section('slot')
+<div class="w-full sm:max-w-md mt-48 px-6 py-4 bg-[#4A78C26c] shadow-md overflow-hidden sm:rounded-lg place-self-center font-semibold text-white">
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
+        {{ __('Está é uma área segura do sistema. Coloque sua senha para continuar') }}
     </div>
 
     <form method="POST" action="{{ route('password.confirm') }}">
@@ -8,7 +10,7 @@
 
         <!-- Password -->
         <div>
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" :value="__('Senha')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
@@ -20,8 +22,9 @@
 
         <div class="flex justify-end mt-4">
             <x-primary-button>
-                {{ __('Confirm') }}
+                {{ __('Confirmar') }}
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</div>
+@endsection
