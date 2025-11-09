@@ -73,6 +73,12 @@
             <x-input-error class="mt-2" :messages="$errors->get('city')" />
         </div>
 
+        <div class="mt-4">
+            <x-input-label for="phone" :value="__('Telefone')" />
+            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" :value="old('phone', $user->phone)" required autofocus autocomplete="phone" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+        </div>
+
         <div class="flex items-center gap-4 mt-2">
             <x-primary-button>{{ __('Salvar') }}</x-primary-button>
 

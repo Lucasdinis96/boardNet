@@ -29,10 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile/my-trades/{trade}/update', [TradeController::class, 'update'])->name('updateTrade');
     Route::delete('/profile/my-trades/{trade}', [TradeController::class, 'destroy'])->name('deleteTrade');
     Route::delete('/profile/my-trades/{trade}/boardgame/{boardgame}', [TradeController::class, 'detachBoardgame'])->name('detachBoardgame');
-    Route::get('/profile/collection', [CollectionController::class, 'index'])->name('collection');
+    Route::get('/profile/collection', [CollectionController::class, 'index'])->name('myCollection');
     
     Route::post('/collection', [CollectionController::class, 'add'])->name('addCollection');
-    Route::delete('/boardgame/{collection}', [CollectionController::class, 'remove'])->name('removeCollection');
+    Route::delete('/collection/{collection}', [CollectionController::class, 'remove'])->name('removeCollection');
     
 });
 

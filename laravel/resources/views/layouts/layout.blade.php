@@ -69,7 +69,7 @@
             @if (Route::is('collection') || Route::is('profile.edit') || Route::is('myTrades'))
                 <div class="p-6 w-full h-auto bg-[#4A78C26c] flex flex-row place-content-center gap-5 text-white font-semibold">
                 <a href="{{ route('myTrades')}}">Meus Anúncios</a>
-                <a href="{{ route('collection') }}">Minha Coleção</a>
+                <a href="{{ route('myCollection') }}">Minha Coleção</a>
                 <a href="{{ route('profile.edit') }}">Meus Dados</a>
                 </div>
             @endif

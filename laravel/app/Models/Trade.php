@@ -21,7 +21,7 @@ class Trade extends Model
     }
 
    public function boardgames () {
-        return $this->belongsToMany(Boardgame::class, 'trade_boardgames', 'trade_id', 'boardgame_id')
+        return $this->belongsToMany(Boardgame::class, 'tradeItens', 'trade_id', 'boardgame_id')
                     ->withPivot('value')
                     ->withTimestamps();
     }

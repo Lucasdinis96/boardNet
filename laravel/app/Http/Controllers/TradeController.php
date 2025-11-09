@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Boardgame;
 use App\Models\Trade;
-use App\Models\Trade_boardgame;
+use App\Models\TradeItens;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,7 +46,7 @@ class TradeController extends Controller
         ]);
 
         foreach ($request->boardgames as $bg) {
-            Trade_boardgame::create([
+            TradeItens::create([
                 'trade_id' => $trade->id,
                 'boardgame_id' => $bg['id'],
                 'value' => $bg['value'],
@@ -65,7 +65,6 @@ class TradeController extends Controller
 
     public function update(Request $request, Trade $trade) {
 
-        //dd($request->all());
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:5000',
