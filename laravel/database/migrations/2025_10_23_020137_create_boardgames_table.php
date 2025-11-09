@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('playtime')->nullable();
             $table->string('age_range')->nullable();
             $table->text('description')->nullable();
+            $table->string('cover')->nullable();
             $table->timestamps();
         });
     }

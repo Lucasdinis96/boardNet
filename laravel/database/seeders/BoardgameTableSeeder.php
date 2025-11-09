@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,14 +14,15 @@ class BoardgameTableSeeder extends Seeder
     {
         DB::table('boardgames')->insert([
             [
-                'title' => 'Catan',
+                'title' => 'King of Tokyo',
                 'publisher' => 'Devir Brasil',
-                'players' => '2 a 4 Jogadores (6 com expansões)',
-                'playtime' => '90 min',
-                'age_range' => 'A partir de 12 anos',
+                'players' => '2 a 6 Jogadores',
+                'playtime' => '30 min',
+                'age_range' => 'A partir de 8 anos',
                 'description' => 'Em Catan os jogadores tentam ser a força dominante na ilha de Catan, construindo estradas, vilas e cidades. Em cada turno, 
                     os dados são rolados para determinar quais recursos a ilha produz. Os jogadores coletam esses recursos - madeira, trigo, tijolo, ovelha ou pedra
                     - para construir suas civilizações, chegar a 10 pontos de vitória e ganhar o jogo.',
+                'cover' => 'assets/covers/kingoftokyo.webp',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -38,6 +38,7 @@ class BoardgameTableSeeder extends Seeder
                     para ganhar pontos. Carcassonne além de ser o jogo que inventou o marcador do Meeple (my+people) se tornou um novo clássico moderno dos jogos de
                     tabuleiro, altamente acessível à iniciantes, mas com camadas estratégicas tão fortes que se tornou um jogo com diversos torneios e competições 
                     mundiais.',
+                'cover' => 'assets/covers/carcassone.jpg',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -55,6 +56,7 @@ class BoardgameTableSeeder extends Seeder
                     Dê início à sua saga massacrando “Rãs Voadoras” ou um “Troll da Internet”, para quem sabe um dia ter o prazer de matar o temível
                     “Dragão de Plutônio”.
                     Rápido e leve, Munchkin vai levar qualquer grupo de jogadores de RPG à loucura! E, enquanto todos estiverem rindo, você pode roubar suas coisas.',
+                'cover' => 'assets/covers/munchkin.webp',
                 'created_at' => now(),
                 'updated_at' => now()
             ],

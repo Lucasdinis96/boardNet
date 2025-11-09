@@ -20,9 +20,12 @@
                     </ul>
                 <br/>
                 <p><strong>Cidade: </strong> {{ $trade->user->city->name }}-{{ $trade->user->city->state->uf }}</p><br/>
-                
+                <a href="https://wa.me/{{ $trade->user->phone }}" target="_blank" class="text-black hover:underline rounded bg-green-500 p-2">
+                    Entrar em Contato
+                </a>
         </div>
     </div>
+    
     <div>
         <a href="{{ $previous ? $previous : route('home') }}" class="rounded w-fit bg-[#C9A14D] hover:bg-[#d3b370] p-2 font-semibold">Voltar</a>
     </div>

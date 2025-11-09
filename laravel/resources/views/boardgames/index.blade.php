@@ -9,7 +9,7 @@
             <div class="bg-[#4A78C26c] rounded-lg shadow-[0_4px_8px_black] overflow-hidden flex flex-col items-center justify-center
                 w-full p-4 sm:w-[300px] md:w-[350px] lg:w-[400px]">
                 <a href="{{ route('showBoardgame', $boardgame->id)}}" class="flex flex-col">
-                    <img src="/assets/capateste1.jpg" alt="capa" class="w-[100px] h-auto object-contain self-center">
+                    <img src="{{ asset($boardgame->cover) }}" alt="capa" class="w-[100px] h-auto object-contain self-center">
                     <p class="self-center">{{ $boardgame->title }}</p>
                     <p>Jogadores: {{ $boardgame->players }}</p>
                     <p>Tempo de Jogo {{ $boardgame->playtime }}</p>

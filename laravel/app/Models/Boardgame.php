@@ -17,10 +17,11 @@ class Boardgame extends Model
         'playtime',
         'age_range',
         'description',
+        'cover'
     ];
 
     public function trades() {
-        return $this->belongsToMany(Trade::class, 'trade_boardgames', 'boardgame_id', 'trade_id')
+        return $this->belongsToMany(Trade::class, 'tradeItens', 'boardgame_id', 'trade_id')
                     ->withPivot('value')
                     ->withTimestamps();
     }

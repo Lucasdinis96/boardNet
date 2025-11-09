@@ -1,6 +1,6 @@
 services:
   php:
-    container_name: api_backend
+    container_name: laravel
     build: 
       context: ./docker/php
       dockerfile: Dockerfile

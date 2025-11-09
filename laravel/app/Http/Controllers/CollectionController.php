@@ -15,21 +15,17 @@ class CollectionController extends Controller
     }
 
     public function add(Request $request) {
-        $request->validate([
-            'boardgame_id' => 'required|exists:boardgames,id',
-        ]);
+        $user = auth()->user();
+        $user->boardgames()->syncWithoutDetaching([$request->boardgame_id]);
 
-        Collection::create([
-            'user_id' => Auth::id(),
-            'boardgame_id' => $request->boardgame_id,
-        ]);
-
-        return back();
+        return $request->expectsJson() ? response()->json(['status' => 'added'])
+        : back();
     }
 
-    public function remove(Collection $collection) {
-        $collection->delete();
+    public function remove($boardgameId, Request $request) {
+        $user = auth()->user();
+        $user->boardgames()->detach($boardgameId);
 
-        return back();
+        return $request->expectsJson() ? response()->json(['status' => 'removed']) : back();
     }
 }
