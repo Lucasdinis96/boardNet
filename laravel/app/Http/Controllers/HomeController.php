@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Boardgame;
-use App\Models\Trade;
+use App\Services\HomeService;
 
-class HomeController extends Controller
-{
-    public function index (){
-        $trades = Trade::with('user','boardgames')->latest()->limit(8)->get();
-        $boardgames = Boardgame::limit(4)->get();
+class HomeController extends Controller {
+    protected $service;
 
-        return view('home', compact('boardgames','trades'));
+    public function __construct(HomeService $service) {
+        $this->service = $service;
+    }
+
+    public function index() {
+        $data = $this->service->getHomeData();
+        return view('home', $data);
     }
 }

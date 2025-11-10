@@ -66,11 +66,11 @@
             <div class="fixed top-0 left-0 w-full h-screen bg-cover bg-center -z-10" 
                     style="background-image: url('{{ asset('assets/background.png')}}')">
             </div>
-            @if (Route::is('collection') || Route::is('profile.edit') || Route::is('myTrades'))
+            @if (Route::is('myCollection') || Route::is('editProfile') || Route::is('myTrades'))
                 <div class="p-6 w-full h-auto bg-[#4A78C26c] flex flex-row place-content-center gap-5 text-white font-semibold">
                 <a href="{{ route('myTrades')}}">Meus Anúncios</a>
                 <a href="{{ route('myCollection') }}">Minha Coleção</a>
-                <a href="{{ route('profile.edit') }}">Meus Dados</a>
+                <a href="{{ route('editProfile') }}">Meus Dados</a>
                 </div>
             @endif
             @yield('slot')
