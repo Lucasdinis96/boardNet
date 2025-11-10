@@ -3,70 +3,40 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\City;
+use App\Services\ProfileService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
-class ProfileController extends Controller
-{
-    /**
-     * Display the user's profile form.
-     */
+class ProfileController extends Controller {
+    protected ProfileService $service;
 
-    public function edit(Request $request): View
-    {
-        
-        $user = Auth::user();
-        $cities = City::orderBy('name')->get();
-        return view('profile.edit', compact('user', 'cities'));
+    public function __construct(ProfileService $service) {
+        $this->service = $service;
     }
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-
-        $data = $request->validated();
-
-        if (isset($data['phone'])) {
-            $digits = preg_replace('/\D/','', $data['phone']);
-
-            if (!str_starts_with($digits, '55')) {
-                $digits = '55'.$digits;
-            }
-
-            $data['phone'] = $digits;
-        }
-
-        $request->user()->fill($data);
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    public function edit(Request $request): View {
+        $data = $this->service->getEditData();
+        return view('profile.edit', $data);
     }
 
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
-    {
+    public function update(ProfileUpdateRequest $request): RedirectResponse {
+        $this->service->updateProfile($request->user(), $request->validated());
+
+        return Redirect::route('editProfile')->with('status', 'profile-updated');
+    }
+
+    public function destroy(Request $request): RedirectResponse {
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
 
         $user = $request->user();
-
         Auth::logout();
 
-        $user->delete();
+        $this->service->deleteAccount($user);
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

@@ -2,30 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Collection;
+use App\Services\CollectionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CollectionController extends Controller
-{
+class CollectionController extends Controller {
+    protected $service;
+
+    public function __construct(CollectionService $service) {
+        $this->service = $service;
+    }
 
     public function index() {
-        $boardgames = Auth::user()->boardgames()->withPivot('id')->paginate(8);
-        return view ('users.collection', compact('boardgames'));
+        $boardgames = $this->service->getUserCollection(Auth::user());
+        return view('users.collection', compact('boardgames'));
     }
 
     public function add(Request $request) {
-        $user = auth()->user();
-        $user->boardgames()->syncWithoutDetaching([$request->boardgame_id]);
+        $user = Auth::user();
+        $response = $this->service->addBoardgame($user, $request->boardgame_id);
 
-        return $request->expectsJson() ? response()->json(['status' => 'added'])
-        : back();
+        return $request->expectsJson() ? response()->json($response) : back();
     }
 
     public function remove($boardgameId, Request $request) {
-        $user = auth()->user();
-        $user->boardgames()->detach($boardgameId);
+        $user = Auth::user();
+        $response = $this->service->removeBoardgame($user, $boardgameId);
 
-        return $request->expectsJson() ? response()->json(['status' => 'removed']) : back();
+        return $request->expectsJson() ? response()->json($response) : back();
     }
 }

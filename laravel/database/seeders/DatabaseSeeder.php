@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             BoardgameTableSeeder::class,
             CollectionTableSeeder::class,
             TradeTableSeeder::class,
-            TradeBoardgameTableSeeder::class
+            TradeItensTableSeeder::class
         ]);
     }
 }

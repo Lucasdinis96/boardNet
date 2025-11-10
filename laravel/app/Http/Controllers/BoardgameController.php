@@ -2,22 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Boardgame;
+use App\Services\BoardgameService;
 use Illuminate\Http\Request;
 
 class BoardgameController extends Controller
 {
+    protected $service;
+
+    public function __construct(BoardgameService $service) {
+        $this->service = $service;
+    }
 
     public function index() {
-        $boardgames = Boardgame::paginate(8);
-        return view('boardgames.index',compact('boardgames'));
+        $boardgames = $this->service->listBoardgames();
+        return view('boardgames.index', compact('boardgames'));
     }
 
     public function show(Request $request, string $id) {
-
-        $boardgame = Boardgame::findOrFail($id);
+        
+        $boardgame = $this->service->getBoardgame((int) $id);
         $goBack = url()->previous();
+
         return view('boardgames.show', compact('boardgame', 'goBack'));
     }
-
 }

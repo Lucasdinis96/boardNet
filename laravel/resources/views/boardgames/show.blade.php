@@ -14,7 +14,7 @@
                 <button id="toggleCollectionBtn"
                         data-boardgame-id="{{ $boardgame->id }}"
                         data-action="{{ $inCollection ? 'remove' : 'add' }}"
-                        class="{{ $inCollection ? 'bg-red-600 hover:border-2 border-[#C9A14D]': 'bg-green-600 hover:border-6 border-[#C9A14D]' }} text-white px-4 py-2 rounded">
+                        class="{{ $inCollection ? 'bg-red-600' : 'bg-green-600' }} text-white px-4 py-2 rounded">
                     {{ $inCollection ? 'Remover da Coleção' : 'Adicionar à Coleção' }}
                 </button>
             </div>
