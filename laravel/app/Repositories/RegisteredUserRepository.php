@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class RegisteredUserRepository {
+    
     public function getAllCities() {
         return City::orderBy('name')->get();
     }

@@ -12,3 +12,4 @@ Histórico de commits:
 - feat: Layouts and Views - Criação do layout base e views e customização das paginas de autenticação;
 - feat: Contact and Covers - Adição de coluna de contato tipo telefone para users e de coluna de capas para jogos;
 - feat: Services and Repositories - Criação de Services, Repositories e requests para utilizar com API.
+- feat: API - Construção da API para uso com o flutter;

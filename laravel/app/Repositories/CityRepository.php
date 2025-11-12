@@ -9,7 +9,7 @@ class CityRepository {
     public function search(string $term, int $limit = 10) {
         return City::with('state')
             ->where('name', 'like', "%{$term}%")
-            ->orderBy('name')
+            ->orderBy('id')
             ->limit($limit)
             ->get();
     }
