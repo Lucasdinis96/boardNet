@@ -40,6 +40,11 @@ class TradeController extends Controller {
     }
 
     public function edit(Trade $trade) {
+
+        if ($trade->user_id !== auth()->id()) {
+            abort(403, 'Você não tem permissão para editar esta troca.');
+        }
+
         $boardgames = Boardgame::all();
         return view('trades.edit', compact('trade', 'boardgames'));
     }
@@ -50,6 +55,10 @@ class TradeController extends Controller {
     }
 
     public function destroy(Trade $trade) {
+
+        if ($trade->user_id !== auth()->id()) {
+            abort(403, 'Você não tem permissão para editar esta troca.');
+        }
         $this->tradeService->deleteTrade($trade);
         return redirect()->route('myTrades');
     }

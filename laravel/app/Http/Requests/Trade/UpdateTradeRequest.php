@@ -11,7 +11,9 @@ class UpdateTradeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()->can('update', $this->trade);
+        $trade = $this->route('trade');
+        
+        return $this->user() && $trade->user_id == $this->user()->id;
     }
 
     /**
@@ -22,11 +24,11 @@ class UpdateTradeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string|max:5000',
-            'boardgames' => 'required|array',
-            'boardgames.*.id' => 'required|exists:boardgames,id',
-            'boardgames.*.value' => 'nullable|numeric|min:0'
+            'title' => 'sometimes|string|max:255',
+            'description' => 'sometimes|string|max:5000',
+            'boardgames' => 'sometimes|array',
+            'boardgames.*.id' => 'sometimes|exists:boardgames,id',
+            'boardgames.*.value' => 'sometimes|numeric|min:0'
         ];
     }
 }

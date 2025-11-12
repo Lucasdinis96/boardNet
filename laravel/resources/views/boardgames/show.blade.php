@@ -10,13 +10,14 @@
                 @php
                     $inCollection = auth()->check() && auth()->user()->boardgames->contains($boardgame->id);
                 @endphp
-
-                <button id="toggleCollectionBtn"
-                        data-boardgame-id="{{ $boardgame->id }}"
-                        data-action="{{ $inCollection ? 'remove' : 'add' }}"
-                        class="{{ $inCollection ? 'bg-red-600' : 'bg-green-600' }} text-white px-4 py-2 rounded">
-                    {{ $inCollection ? 'Remover da Coleção' : 'Adicionar à Coleção' }}
-                </button>
+                @auth
+                    <button id="toggleCollectionBtn"
+                            data-boardgame-id="{{ $boardgame->id }}"
+                            data-action="{{ $inCollection ? 'remove' : 'add' }}"
+                            class="{{ $inCollection ? 'bg-red-600' : 'bg-green-600' }} text-white px-4 py-2 rounded">
+                        {{ $inCollection ? 'Remover da Coleção' : 'Adicionar à Coleção' }}
+                    </button>
+                @endauth
             </div>
         </div>
         <div class="text-justify w-auto h-auto">
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const url = action === 'add'
             ? "{{ route('addCollection') }}"
-            : "{{ url('/collection') }}/" + boardgameId;
+            : "{{ route('removeCollection', $boardgame->id) }}";
 
         const method = action === 'add' ? 'POST' : 'DELETE';
 

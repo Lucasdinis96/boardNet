@@ -15,9 +15,8 @@ class ProfileService {
 
     public function getEditData(): array {
         $user = Auth::user();
-        $cities = $this->repository->getAllCities();
 
-        return compact('user', 'cities');
+        return compact('user');
     }
 
     public function updateProfile(User $user, array $data): void {

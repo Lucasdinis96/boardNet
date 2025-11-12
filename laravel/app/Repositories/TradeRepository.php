@@ -39,12 +39,17 @@ class TradeRepository {
     }
 
     public function update(Trade $trade, array $data, array $boardgames) {
-        $trade->update([
-            'title' => $data['title'],
-            'description' => $data['description'] ?? null,
-        ]);
-
-        $syncData = [];
+        
+        if (isset($data['title']) || isset($data['description'])) {
+            $trade->update([
+                'title' => $data['title'] ?? $trade->title,
+                'description' => $data['description'] ?? $trade->description,
+            ]);
+        }
+        
+        if (!empty($boardgames)) {
+            $syncData = [];
+        }
 
         foreach ($boardgames as $boardgame) {
             if (!empty($boardgame['id'])) {
@@ -54,7 +59,7 @@ class TradeRepository {
 
         $trade->boardgames()->sync($syncData);
 
-        return $trade;
+        return $trade->load('boardgames');
     }
 
     public function delete(Trade $trade) {
@@ -68,6 +73,10 @@ class TradeRepository {
     }
 
     public function detachBoardgame(Trade $trade, int $boardgameId) {
+        
+        if ($trade->user_id !== auth()->id()) {
+            return response()->json(['message' => 'Você não tem permissão para deletar esta troca.'], 403);
+        }
         $trade->boardgames()->detach($boardgameId);
     }
 }
