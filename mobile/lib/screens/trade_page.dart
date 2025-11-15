@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/app_routes.dart';
 import 'package:mobile/widgets/appbar.dart';
 import '../services/trade_service.dart';
 import '../models/trade_model.dart';
@@ -100,7 +101,7 @@ class _TradesPageState extends State<TradesPage> {
                             children: [
                               const SizedBox(width: 10),
                               Expanded(
-                                child: Text('${boardgame.title} - R\$${boardgame.value} - ${boardgame.playtime}'),
+                                child: Text('${boardgame.title} - R\$${boardgame.value}'),
                               ),
                             ],
                           );
@@ -126,16 +127,7 @@ class _TradesPageState extends State<TradesPage> {
                           ),
                           const SizedBox(width: 10),
                           ElevatedButton(
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                context,
-                                '/trade',
-                                arguments: {
-                                  'token': widget.token,
-                                  'tradeId': trade.id,
-                                },
-                              );
-                            },
+                            onPressed: () {Navigator.pushNamed(context, AppRoutes.tradeDetail, arguments: {'trade': trade});},
                             child: const Text("Ver detalhes"),
                           ),
                         ]
