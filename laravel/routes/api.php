@@ -15,7 +15,7 @@ Route::domain('api.localhost')->group(function () {
     Route::post('/register', [RegisterApiController::class, 'store']);
     Route::post('/login', [LoginApiController::class, 'login']);
     
-    Route::get('/cities/search', [CityController::class, 'search']);
+    Route::get('/cities', [CityController::class, 'search']);
 
     Route::middleware('auth:sanctum')->group(function () {
         

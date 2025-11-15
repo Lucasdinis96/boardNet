@@ -12,8 +12,8 @@ class CityService
         $this->repository = $repository;
     }
 
-    public function searchCities(string $term, int $limit = 10) {
-        $cities = $this->repository->search($term, $limit);
+    public function searchCities(string $term) {
+        $cities = $this->repository->search($term);
 
         return $cities->map(function ($city) {
             return [
