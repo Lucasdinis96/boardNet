@@ -58,13 +58,17 @@ class Boardgame {
   final String cover;
   final double value;
   final String playtime;
+  final String ageRange;
+  final String players;
 
   Boardgame({
     required this.id,
     required this.title,
     required this.cover,
     required this.value,
-    required this.playtime
+    required this.playtime,
+    required this.ageRange,
+    required this.players
   });
 
   factory Boardgame.fromJson(Map<String, dynamic> json) {
@@ -73,7 +77,9 @@ class Boardgame {
       title: json['title'],
       cover: json['cover'],
       value: (json['pivot']?['value'] ?? 0).toDouble(),
-      playtime: (json['playtime'])
+      playtime: (json['playtime']),
+      ageRange: (json['age_range']),
+      players: (json['players']),
     );
   }
 }

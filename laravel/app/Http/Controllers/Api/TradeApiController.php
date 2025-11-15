@@ -30,7 +30,7 @@ class TradeApiController extends Controller
     public function show(string $id): JsonResponse {
         $trade = $this->tradeService->showTrade($id);
 
-        if (!$trade) {
+        if ($trade) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Troca não encontrada'
