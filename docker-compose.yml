@@ -11,6 +11,22 @@ services:
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - laravel-network
+  
+  flutter:
+    container_name: flutter
+    image: cirrusci/flutter:latest
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./mobile:/app
+    ports:
+      - "8081:8081"
+    command: >
+      bash -c "flutter pub get &&
+               flutter run -d web-server --web-port=8081 --web-hostname=0.0.0.0"
+    networks:
+      - laravel-network
+
   nginx:
     container_name: nginx
     build:

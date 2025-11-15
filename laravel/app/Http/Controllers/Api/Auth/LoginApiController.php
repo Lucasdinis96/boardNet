@@ -26,7 +26,6 @@ class LoginApiController extends Controller
         $token = $user->createToken('api_token')->plainTextToken;
 
         return response()->json([
-            'message' => 'Login realizado com sucesso.',
             'token' => $token,
             'user' => $user,
         ]);

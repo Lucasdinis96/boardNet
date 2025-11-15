@@ -8,8 +8,8 @@ use App\Http\Requests\Trade\UpdateTradeRequest;
 use App\Models\Boardgame;
 use App\Models\Trade;
 use App\Services\TradeService;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class TradeApiController extends Controller
 {
@@ -56,7 +56,7 @@ class TradeApiController extends Controller
 
     public function update(UpdateTradeRequest $request, Trade $trade): JsonResponse {
 
-        if ($trade->user_id !== auth()->id()) {
+        if ($trade->user_id !== Auth::id()) {
             return response()->json(['message' => 'Você não tem permissão para alterar esta troca.'], 403);
         }
         

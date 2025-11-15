@@ -74,7 +74,7 @@ class TradeRepository {
 
     public function detachBoardgame(Trade $trade, int $boardgameId) {
         
-        if ($trade->user_id !== auth()->id()) {
+        if ($trade->user_id !== Auth::id()) {
             return response()->json(['message' => 'Você não tem permissão para deletar esta troca.'], 403);
         }
         $trade->boardgames()->detach($boardgameId);
