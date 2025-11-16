@@ -8,6 +8,7 @@ use App\Http\Requests\Trade\UpdateTradeRequest;
 use App\Models\Boardgame;
 use App\Models\Trade;
 use App\Services\TradeService;
+use App\Http\Resources\TradeResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,7 @@ class TradeApiController extends Controller
         $trades = $this->tradeService->listTrades();
         return response()->json([
             'status' => 'success',
-            'data' => $trades
+            'data' => TradeResource::collection($trades)
         ]);
     }
 

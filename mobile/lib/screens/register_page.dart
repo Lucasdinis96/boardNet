@@ -17,7 +17,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
   final _phoneController = TextEditingController();
-  final _cityIdController = TextEditingController();
 
   bool _loading = false;
 
@@ -35,7 +34,6 @@ class _RegisterPageState extends State<RegisterPage> {
       password: _passwordController.text,
       confirmPassword: _confirmPasswordController.text,
       phone: _phoneController.text,
-      cityId: int.parse(_cityIdController.text),
     );
 
     setState(() => _loading = false);
@@ -99,13 +97,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _phoneController,
                 decoration: const InputDecoration(labelText: 'Telefone (Whatsapp)', filled: true, fillColor: Color(0xFFC9A14D)),
                 validator: (v) => v!.isEmpty ? 'Informe o telefone' : null,
-              ),
-              const SizedBox(height: 12),
-
-              TextFormField(
-                controller: _cityIdController,
-                decoration: const InputDecoration(labelText: 'ID da Cidade', filled: true, fillColor: Color(0xFFC9A14D)),
-                validator: (v) => v!.isEmpty ? 'Informe a cidade' : null,
               ),
               const SizedBox(height: 20),
 

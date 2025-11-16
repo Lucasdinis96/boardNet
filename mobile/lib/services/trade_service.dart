@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../config/api_config.dart';
 import '../models/trade_model.dart';
 
@@ -11,7 +12,9 @@ class TradeService {
     ),
   );
 
-  static Future<List<Trade>> fetchTrades(String token) async {
+  static Future<List<Trade>> fetchTrades() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token');
     try {
       final response = await _dio.get(
         '/trades',
@@ -21,7 +24,7 @@ class TradeService {
       );
 
       final tradesList = response.data['data'] as List;
-
+      
       return tradesList.map((json) => Trade.fromJson(json)).toList();
     } catch (e) {
       throw Exception('Erro ao carregar trades: $e');

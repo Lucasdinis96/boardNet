@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Services\ProfileService;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,9 +25,7 @@ class ProfileApiController extends Controller
     public function show(Request $request)
     {
         $data = $this->service->getEditData(); // Ou simplesmente $request->user()
-        return response()->json([
-            'user' => $request->user(),
-        ]);
+        return response()->json(UserResource::collection($data));
     }
 
     /**
@@ -38,7 +37,6 @@ class ProfileApiController extends Controller
 
         return response()->json([
             'message' => 'Perfil atualizado com sucesso.',
-            'user' => $request->user()->fresh()
         ]);
     }
 

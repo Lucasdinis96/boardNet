@@ -1,7 +1,7 @@
-import 'package:mobile/widgets/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile/models/trade_model.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../models/trade_model.dart';
+import '../widgets/appbar.dart';
 
 class TradeDetailPage extends StatelessWidget {
   final Trade trade;
@@ -31,6 +31,8 @@ class TradeDetailPage extends StatelessWidget {
                 const SizedBox(height: 12),
 
                 Text("Usuário: ${user.name}"),
+                const SizedBox(height: 4),
+                Text("Usuário: ${user.city}"),
                 
                 const SizedBox(height: 12),
 
