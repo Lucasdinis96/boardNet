@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/app_routes.dart';
-import 'package:mobile/widgets/appbar.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../app_routes.dart';
+import '../widgets/appbar.dart';
 import '../services/trade_service.dart';
 import '../models/trade_model.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 
 class TradesPage extends StatefulWidget {
   

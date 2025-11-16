@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../screens/auth_page.dart';
-import '../screens/trade_page.dart';
-import '../screens/trade_detail_page.dart';
-import '../screens/register_page.dart';
-import '../screens/editregister_page.dart';
+import 'pages/auth_page.dart';
+import 'pages/trade_page.dart';
+import 'pages/trade_detail_page.dart';
+import 'pages/register_page.dart';
+import 'pages/editregister_page.dart';
 
 class AppRoutes {
   static const login = '/login';

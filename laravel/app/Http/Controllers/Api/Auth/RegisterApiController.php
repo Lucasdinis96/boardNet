@@ -10,17 +10,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-class RegisterApiController extends Controller
-{
+class RegisterApiController extends Controller {
     protected RegisteredUserService $service;
 
-    public function __construct(RegisteredUserService $service)
-    {
+    public function __construct(RegisteredUserService $service) {
         $this->service = $service;
     }
 
-    public function store(RegisteredUserRequest $request): JsonResponse
-    {
+    public function store(RegisteredUserRequest $request): JsonResponse {
         $data = $request->validated();
 
         $user = $this->service->register($data);
@@ -29,7 +26,6 @@ class RegisterApiController extends Controller
 
         return response()->json([
             'message' => 'Usuário registrado com sucesso!',
-            'user' => $user,
             'token' => $token,
         ], 201);
     }

@@ -9,30 +9,19 @@ use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ProfileApiController extends Controller
-{
+class ProfileApiController extends Controller {
     protected ProfileService $service;
 
-    public function __construct(ProfileService $service)
-    {
+    public function __construct(ProfileService $service) {
         $this->service = $service;
-        
     }
 
-    /**
-     * Retorna os dados do perfil autenticado
-     */
-    public function show(Request $request)
-    {
-        $data = $this->service->getEditData(); // Ou simplesmente $request->user()
+    public function show(Request $request) {
+        $data = $this->service->getEditData();
         return response()->json(UserResource::collection($data));
     }
 
-    /**
-     * Atualiza o perfil do usuário autenticado
-     */
-    public function update(ProfileUpdateRequest $request)
-    {
+    public function update(ProfileUpdateRequest $request) {
         $this->service->updateProfile($request->user(), $request->validated());
 
         return response()->json([

@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: action === 'add' ? JSON.stringify({ boardgame_id: boardgameId }) : null,
             });
 
-            // se Laravel retornou uma página HTML (ex: redirect), cancela
             const contentType = response.headers.get('content-type');
             if (!contentType || !contentType.includes('application/json')) {
                 console.warn('Resposta não é JSON — pode ser redirect. Recarregando...');
