@@ -27,7 +27,6 @@ class LoginApiController extends Controller
 
         return response()->json([
             'token' => $token,
-            'user' => $user,
         ]);
     }
 

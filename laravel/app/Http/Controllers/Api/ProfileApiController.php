@@ -26,7 +26,6 @@ class ProfileApiController extends Controller
         $data = $this->service->getEditData(); // Ou simplesmente $request->user()
         return response()->json([
             'user' => $request->user(),
-            'extra' => $data
         ]);
     }
 

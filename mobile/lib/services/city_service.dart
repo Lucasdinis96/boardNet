@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class CityService {
   final Dio _dio = Dio(BaseOptions(baseUrl: ApiConfig.baseUrl));
 
-  Future<Map<int, Map<String, dynamic>>> getCidades() async {
+  Future<Map<int, Map<String, dynamic>>> getCities() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token');
 
