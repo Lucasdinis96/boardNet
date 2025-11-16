@@ -11,7 +11,6 @@ class TradeService {
     ),
   );
 
-  /// Buscar TODAS as trades
   static Future<List<Trade>> fetchTrades(String token) async {
     try {
       final response = await _dio.get(

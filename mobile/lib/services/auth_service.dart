@@ -87,5 +87,65 @@ class AuthService {
       };
     }
   }
+
+  Future<Map<String, dynamic>> getProfile() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token');
+
+      final response = await _dio.get(
+        '/profile',
+        options: Options(headers: {
+          'Authorization': 'Bearer $token',
+        }),
+      );
+
+      return {
+        'success': true,
+        'data': response.data,
+      };
+    } catch (e) {
+      return {
+        'success': false,
+        'error': e.toString(),
+      };
+    }
+  }
+
+
+  Future<Map<String, dynamic>> editRegister({
+    required String? name,
+    required String? email,
+    required String? phone,
+    required int? cityId,
+  }) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token');
+
+      final response = await _dio.put(
+        '/profile/update',
+        data: {
+          'name': name,
+          'email': email,
+          'phone': phone,
+          'city_id': cityId,
+        },
+        options: Options(
+          headers: {'Authorization': 'Bearer $token'}
+        )
+      );
+
+      return {
+        'success': true,
+        'data': response.data,
+      };
+    } catch (e) {
+      return {
+        'success': false,
+        'error': e.toString(),
+      };
+    }
+  }
 }
 

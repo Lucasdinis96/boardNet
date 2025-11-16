@@ -32,7 +32,7 @@ class _TradesPageState extends State<TradesPage> {
   Future<void> _loadCitiesAndTrades() async {
     // Busca cidades e trades em paralelo
     final trades = TradeService.fetchTrades(widget.token);
-    final cidades = await _cityService.getCidades();
+    final cidades = await _cityService.getCities();
 
     setState(() {
       _cidades = cidades;
@@ -50,7 +50,7 @@ class _TradesPageState extends State<TradesPage> {
     }
 
     return Scaffold(
-      appBar: CustomAppBar(titleText: 'Anúncios'),
+      appBar: CustomAppBar(titleText: 'Anúncios', token: widget.token,),
       body: FutureBuilder<List<Trade>>(
         future: tradesFuture,
         builder: (context, snapshot) {

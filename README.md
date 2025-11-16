@@ -15,3 +15,4 @@ Histórico de commits:
 - feat: API - Construção da API para uso com o flutter;
 - feat: Flutter - Instalação do flutter para projeto mobile e criação de paginas de login, registro e anúncios;
 - feat: Trade Details - Criação da página de detalhes do anúncio;
+- feat: Edit Register - Criação da página de edição de dados de registro;
