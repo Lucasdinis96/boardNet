@@ -17,9 +17,8 @@ class _EditRegisterPageState extends State<EditRegisterPage> {
   late TextEditingController _phoneController;
 
   bool _loading = false;
-  bool _loadingProfile = true;
+ 
 
-  Map<String, dynamic>? _userData;
 
   @override
   void initState() {
@@ -27,28 +26,21 @@ class _EditRegisterPageState extends State<EditRegisterPage> {
     _nameController = TextEditingController();
     _emailController = TextEditingController();
     _phoneController = TextEditingController();
-
     _loadUserProfile();
   }
 
   Future<void> _loadUserProfile() async {
     final response = await AuthService().getProfile();
 
-    if (!mounted) return;
-
-    if (response['success']) {
+      if (response['success']) {
       final data = response['data']['user'];
 
       setState(() {
-        _userData = data;
-        _loadingProfile = false;
-
         _nameController.text = data['name'] ?? '';
         _emailController.text = data['email'] ?? '';
         _phoneController.text = data['phone'] ?? '';
       });
     } else {
-      setState(() => _loadingProfile = false);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Erro ao carregar dados: ${response['error']}')),
       );
@@ -64,10 +56,7 @@ class _EditRegisterPageState extends State<EditRegisterPage> {
       name: _nameController.text,
       email: _emailController.text,
       phone: _phoneController.text,
-      cityId: _userData?['city_id'], // você decide se vai editar cidade depois
     );
-
-    if (!mounted) return;
 
     setState(() => _loading = false);
 
@@ -85,14 +74,6 @@ class _EditRegisterPageState extends State<EditRegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (_loadingProfile) {
-      return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    }
-
     return Scaffold(
       appBar: CustomAppBar(titleText: 'Editar Conta'),
       body: Padding(

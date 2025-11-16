@@ -19,35 +19,30 @@ class Trade {
       title: json['title'],
       description: json['description'],
       user: User.fromJson(json['user']),
-      boardgames: (json['boardgames'] as List)
-          .map((b) => Boardgame.fromJson(b))
-          .toList(),
+      boardgames: (json['boardgames'] as List).map((b) => Boardgame.fromJson(b)).toList(),
     );
   }
 }
 
 class User {
-  final int id;
   final String name;
   final String email;
   final String phone;
-  final int cityId;
+  final String city;
 
   User({
-    required this.id,
     required this.name,
     required this.email,
     required this.phone,
-    required this.cityId,
+    required this.city,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['id'],
       name: json['name'],
       email: json['email'],
       phone: json['phone'],
-      cityId: json['city_id'],
+      city: json['city'],
     );
   }
 }
@@ -55,7 +50,6 @@ class User {
 class Boardgame {
   final int id;
   final String title;
-  final String cover;
   final double value;
   final String playtime;
   final String ageRange;
@@ -64,7 +58,6 @@ class Boardgame {
   Boardgame({
     required this.id,
     required this.title,
-    required this.cover,
     required this.value,
     required this.playtime,
     required this.ageRange,
@@ -75,8 +68,7 @@ class Boardgame {
     return Boardgame(
       id: json['id'],
       title: json['title'],
-      cover: json['cover'],
-      value: (json['pivot']?['value'] ?? 0).toDouble(),
+      value: (json['value']).toDouble(),
       playtime: (json['playtime']),
       ageRange: (json['age_range']),
       players: (json['players']),

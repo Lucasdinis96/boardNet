@@ -61,7 +61,6 @@ class AuthService {
     required String password,
     required String confirmPassword,
     required String phone,
-    required int cityId,
   }) async {
     try {
       final response = await _dio.post(
@@ -72,7 +71,6 @@ class AuthService {
           'password': password,
           'password_confirmation': confirmPassword,
           'phone': phone,
-          'city_id': cityId,
         },
       );
 
@@ -117,7 +115,6 @@ class AuthService {
     required String? name,
     required String? email,
     required String? phone,
-    required int? cityId,
   }) async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -129,7 +126,6 @@ class AuthService {
           'name': name,
           'email': email,
           'phone': phone,
-          'city_id': cityId,
         },
         options: Options(
           headers: {'Authorization': 'Bearer $token'}
