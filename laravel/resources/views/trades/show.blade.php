@@ -7,8 +7,8 @@
 @section ('slot')
 <div class="flex flex-col justify-center items-center">
     <div class="bg-[#4A78C26c] rounded-lg shadow-[0_4px_8px_black] overflow-hidden flex flex-row justify-around
-                    p-4 m-4 text-white gap-5 w-fit">
-        <div class="text-justify w-auto h-auto">
+                    p-4 m-4 text-white gap-5">
+        <div class="text-justify w-full h-full">
                 <p><strong>Titúlo:</strong> {{ $trade->title }}</p><br/>
                 <p><strong>Descrição: </strong> {{ $trade->description }}</p><br/>
                 <p><strong>Vendedor: </strong> {{ $trade->user->name }}</p><br/>
@@ -20,9 +20,11 @@
                     </ul>
                 <br/>
                 <p><strong>Cidade: </strong> {{ $trade->user->city->name }}-{{ $trade->user->city->state->uf }}</p><br/>
-                <a href="https://wa.me/{{ $trade->user->phone }}" target="_blank" class="text-black hover:underline rounded bg-green-500 p-2">
-                    Entrar em Contato
-                </a>
+                <div class="flex flex-row justify-center items-center">
+                    <a href="https://wa.me/{{ $trade->user->phone }}" target="_blank" class="text-black hover:underline rounded bg-green-500 p-2">
+                        Entrar em Contato
+                    </a>
+                </div>
         </div>
     </div>
     

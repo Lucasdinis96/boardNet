@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import '../config/api_config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../config/api_config.dart';
 
 class CityService {
   final Dio _dio = Dio(BaseOptions(baseUrl: ApiConfig.baseUrl));

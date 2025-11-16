@@ -45,6 +45,26 @@ class UsersTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            [
+                'name' => 'Test User 04',
+                'email' => 'test04@example.com',
+                'password' => bcrypt('teste04'),
+                'birthdate' => Carbon::parse('2000-10-15'),
+                'phone' => '5542988890352',
+                'city_id' => City::inRandomOrder()->first()->id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Test User 05',
+                'email' => 'test05@example.com',
+                'password' => bcrypt('teste05'),
+                'birthdate' => Carbon::parse('2000-10-15'),
+                'phone' => '5542988890352',
+                'city_id' => City::inRandomOrder()->first()->id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
     }
 }

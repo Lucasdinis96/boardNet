@@ -31,7 +31,6 @@ class TradeService {
     }
   }
 
-  /// Buscar uma trade específica
   static Future<Trade> fetchTradeById(String token, int id) async {
     try {
       final response = await _dio.get(

@@ -22,6 +22,7 @@
             </div>
         @endforeach
     </div>
+    <div class="mt-4 place-self-center">{{ $trades->links() }}</div>
     <div class="mt-4 place-self-center">
         <a href="{{ route('home')}}" class="rounded w-fit bg-[#C9A14D] p-2 font-semibold">Voltar</a>
     </div>

@@ -17,10 +17,14 @@ class CollectionTableSeeder extends Seeder
             [
                 'user_id' => 1,
                 'boardgame_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'user_id' => 3,
                 'boardgame_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
         ]);
     }
